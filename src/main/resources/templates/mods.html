@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+    <head th:replace="~{/fragments/head :: head}"></head>
+    <body>
+        <svg th:replace="~{/fragments/svg :: svg}"></svg>
+        <div th:replace="~{/fragments/botontema :: div}"></div>
+        <nav th:replace="~{/fragments/nav :: nav}"></nav>
+        
+        <div th:if="${#lists.isEmpty(publicaciones)}">
+            <p>No se encontraron resultados.</p>
+        </div>
+
+        <div th:if="${not #lists.isEmpty(publicaciones)}">
+            <div class="row">
+                <div th:each="publicacion, iterStat : ${publicaciones}" class="col-md-4">
+                    <div class="card mb-3" style="width: 18rem;" th:attr="data-id=${publicacion.id}">
+                        <div class="card-body" onclick="redirectToPublicacion(this)">
+                            <img th:src="@{/imagen/__${publicacion.fotos[0].id}__}" class="card-img-top" alt="...">
+                            <h5 class="card-title" th:text="${publicacion.titulo}"></h5>
+                            <p class="card-text" th:text="'Descripcion: ' + ${publicacion.descripcion}"></p>
+                            <p class="card-text" th:text="'Precio: $' + ${publicacion.precio}"></p>
+                            <p class="card-text" th:text="${publicacion.categoria}"></p>
+                            <p class="card-text"><small class="text-muted" th:text="${publicacion.fechaPublicacion}"></small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer th:replace="~{/fragments/footer :: footer}"></footer>
+        <script th:replace="~{/fragments/script :: script}"></script>
+
+
+
+
+    </body>
+
+</html>

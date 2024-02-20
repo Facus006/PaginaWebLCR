@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head th:replace="~{/fragments/head :: head}"></head>
+    <body>
+
+        <svg th:replace="~{/fragments/svg :: svg}"></svg>
+        <div th:replace="~{/fragments/botontema :: div}"></div>
+        <nav th:replace="~{/fragments/nav :: nav}"></nav>
+
+
+
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div th:if="${error}" class="alert alert-danger">
+                        <p th:text="${error}"></p>
+                    </div>
+                    <h2>Registro de Usuario</h2>
+                    <form th:action="@{/registro}" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" id="nombre" name="nombre" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido:</label>
+                            <input type="text" id="apellido" name="apellido" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" id="email" name="email" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña:</label>
+                            <input type="password" id="password" name="password" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password2" class="form-label">Confirmar Contraseña:</label>
+                            <input type="password" id="password2" name="password2" required class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="nombreUsuario" class="form-label">Nombre de Usuario:</label>
+                            <input type="text" id="nombreUsuario" name="nombreUsuario" required class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{/fragments/footer :: footer}"></footer>
+        <script th:replace="~{/fragments/script :: script}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="text-center">Lista de Publicaciones</h1>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Usuario</th>
+                    <th>Categoría</th>
+                    <th>Fecha de Publicación</th>
+                    <th>Acciones</th>
+                    <th>ELIMINAR</th>
+                    <th>EDITAR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="publicacion : ${lista}">
+                    <td th:text="${publicacion.titulo}"></td>
+                    <td th:text="${publicacion.usuario.nombre}"></td>
+                    <td th:text="${publicacion.categoria}"></td>
+                    <td th:text="${#dates.format(publicacion.fechaPublicacion, 'dd-MM-yyyy')}"></td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/publicacion/destacar/{id}(id=${publicacion.id})}" th:if="${!publicacion.destacada}">Destacar</a>
+                        <a class="btn btn-danger" th:href="@{/publicacion/eliminarDestacada/{id}(id=${publicacion.id})}" th:if="${publicacion.destacada}">Eliminar Destacada</a>
+                    </td>
+                    <td>
+                        <!-- Botón para borrar la publicación -->
+                        <form th:action="@{/publicacion/borrar/{id}(id=${publicacion.id})}" method="post">
+                            <button type="submit" class="btn btn-danger">ELIMINAR</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" th:href="@{/publicacion/editar/{id}(id=${publicacion.id})}" >Editar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
