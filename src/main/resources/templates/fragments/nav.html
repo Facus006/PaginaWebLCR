@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand d-md-none" href="/inicio">
+            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="/inicio">
+                            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"/></svg>
+                        </a>
+                    </li>
+                    <li  class="nav-item" ><a class="nav-link" href="/categorias/assettocorsa">Assetto Corsa</a></li>
+                    <li  class="nav-item" ><a class="nav-link" href="/categorias/rfactor">Rfactor</a></li>
+                    <form action="/buscar" class="buscador" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="consulta" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-success" type="submit">Buscar</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <li  class="nav-item" th:if="${session.usuariosession == null}"><a class="nav-link" href="/loguear">Iniciar Sesion</a></li>
+                    <li  class="nav-item" th:if="${session.usuariosession == null}"><a class="nav-link" href="/registrar">Registrate!</a></li>
+                    <li  class="nav-item" sec:authorize="hasAnyRole('ADMIN')"><a class="nav-link" href="/publicacion/listar">Destacar</a></li> 
+                    <li  class="nav-item" sec:authorize="hasAnyRole('ADMIN')"><a class="nav-link" href="/publicacion/crear">Ingresar Mod</a></li>
+                    <li  class="nav-item" th:if="${session.usuariosession != null}"><a class="nav-link" href="/logout">Cerrar Sesion!</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>                    

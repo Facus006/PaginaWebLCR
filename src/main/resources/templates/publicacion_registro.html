@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head th:replace="~{/fragments/head :: head}"></head>
+    <body>
+
+        <svg th:replace="~{/fragments/svg :: svg}"></svg>
+        <div th:replace="~{/fragments/botontema :: div}"></div>
+        <nav th:replace="~{/fragments/nav :: nav}"></nav>
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div th:if="${error}" class="alert alert-danger">
+                        <p th:text="${error}"></p>
+                    </div>
+                    <h2>Crear Nueva Publicación</h2>
+
+                    <form th:action="@{/publicacion/crear}" method="POST" enctype="multipart/form-data">
+                        <!-- Descripción -->
+                        <label for="descripcion">Titulo:</label>
+                        <div class="mb-3">
+                            <textarea id="titulo" name="titulo" rows="2" cols="50" required></textarea>
+                        </div>
+                        <label for="descripcion">Precio</label>
+                        <div class="mb-3">
+                            <input type="number" id="precio" name="precio" rows="2" cols="50" required></textarea>
+                        </div>
+
+                        <label for="descripcion">Descripción:</label>
+                        <div class="mb-3">
+                            <textarea id="descripcion" name="descripcion" rows="2" cols="50" required></textarea>
+                        </div>
+
+                        <!-- Categoría -->
+                        <div class="mb-3">
+                            <select name="categoria" >
+                                <option value="AUTOS">AUTOS</option>
+                                <option value="PISTAS">PISTAS</option>
+                                <option value="RFACTOR">RFACTOR</option>
+                                <option value="ASSETTO_CORSA">ASSETTO_CORSA</option>
+                            </select>
+                        </div>
+
+                        <!-- Archivos (Fotos) -->
+                        <div class="mb-3">
+                            <label for="archivos">Fotos (hasta 5):</label>
+                            <input type="file" id="archivos" name="archivos" accept="image/*" multiple required>
+                        </div>
+
+                        <!-- Botón de Envío -->
+                        <button type="submit" class="btn btn-primary">Registrar Publicación</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <footer th:replace="~{/fragments/footer :: footer}"></footer>
+        <script th:replace="~{/fragments/script :: script}"></script>
+    </body>
+</html>
