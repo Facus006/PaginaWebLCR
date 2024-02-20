@@ -1,0 +1,59 @@
+<main>
+    <div th:replace="~{/fragments/banner :: div}"></div>
+
+    <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+        <!-- Publicación 1 -->
+        <div th:if="${not #lists.isEmpty(publicaciones)}">
+            <a th:href="@{'/' + ${publicaciones[0].id}}">
+                <div class="text-bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div class="my-3 py-3">
+                        <h2 class="display-5" th:text="${publicaciones[0].titulo}"></h2>
+                    </div>
+                    <div class="bg-body-tertiary shadow-sm mx-auto img-container">
+                        <img class="img-fluid" th:src="@{/imagen/__${publicaciones[0].fotos[0].id}__}" alt="aynose">
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Publicación 2 -->
+        <div th:if="${publicaciones.size() > 1}">
+            <a th:href="@{'/' + ${publicaciones[1].id}}">
+                <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div class="my-3 p-3">
+                        <h2 class="display-5" th:text="${publicaciones[1].titulo}"></h2>
+                    </div>
+                    <div class="bg-dark shadow-sm mx-auto img-container">
+                        <img class="img-fluid" th:src="@{/imagen/__${publicaciones[1].fotos[0].id}__}" alt="aynose">
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Publicación 3 -->
+        <div th:if="${publicaciones.size() > 2}">
+            <a th:href="@{'/' + ${publicaciones[2].id}}">
+                <div class="bg-body-tertiary me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+                    <div class="my-3 p-4">
+                        <h2 class="display-5" th:text="${publicaciones[2].titulo}"></h2>
+                    </div>
+                    <div class="bg-dark shadow-sm mx-auto img-container">
+                        <img class="img-fluid" th:src="@{/imagen/__${publicaciones[2].fotos[0].id}__}" alt="aynose">
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Manejo de caso sin publicaciones -->
+    <div class="text-center" th:if="${#lists.isEmpty(publicaciones)}">
+        <p>No hay publicaciones disponibles.</p>
+    </div>
+    <br>
+
+    <div class="text-center">
+        <button type="button" class="btn btn-dark" onclick="window.location.href = '/mods'">
+            Ver más
+        </button>
+    </div>
+</main>
