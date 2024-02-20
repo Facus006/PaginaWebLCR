@@ -1,0 +1,17 @@
+com\LCR\PaginaWeb\Entidades\Rol.class
+com\LCR\PaginaWeb\Repositorios\ImagenRepositorio.class
+com\LCR\PaginaWeb\PaginaWebLcrApplication.class
+com\LCR\PaginaWeb\Servicios\ImagenServicio.class
+com\LCR\PaginaWeb\Entidades\Publicacion.class
+com\LCR\PaginaWeb\Errores\MyException.class
+com\LCR\PaginaWeb\Servicios\PublicacionServicio.class
+com\LCR\PaginaWeb\Entidades\Imagen.class
+com\LCR\PaginaWeb\Repositorios\PublicacionRepositorio.class
+com\LCR\PaginaWeb\SeguridadWebConfig.class
+com\LCR\PaginaWeb\Controladores\ImagenControlador.class
+com\LCR\PaginaWeb\Servicios\UsuarioServicio.class
+com\LCR\PaginaWeb\Controladores\UserController.class
+com\LCR\PaginaWeb\Controladores\PublicacionControlador.class
+com\LCR\PaginaWeb\Entidades\Usuario.class
+com\LCR\PaginaWeb\Entidades\Categoria.class
+com\LCR\PaginaWeb\Repositorios\UsuarioRepositorio.class
