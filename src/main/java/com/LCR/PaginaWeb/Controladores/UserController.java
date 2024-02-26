@@ -23,26 +23,26 @@ public class UserController {
     @GetMapping("/")
     public String index(ModelMap modelo) {
         modelo.addAttribute("publicaciones", publicacionServicio.obtenerPublicacionesDestacadas());
-        return "inicio.html";
+        return "inicio";
     }
 
     @GetMapping("/inicio") //este es el inicio despues de logearse
     public String inicio(ModelMap modelo) {
         modelo.addAttribute("publicaciones", publicacionServicio.obtenerPublicacionesDestacadas());
-        return "inicio.html";
+        return "inicio";
     }
 
     // Vista para mostrar todos los mods
     @GetMapping("/mods")
     public String listarMods(ModelMap modelo) {
         modelo.addAttribute("publicaciones", publicacionServicio.listarPublicaciones());
-        return "mods.html";
+        return "mods";
     }
 
     // registro
     @GetMapping("/registrar") // localhost:8080
     public String registrar() {
-        return "UsuarioFormRegistro.html";
+        return "UsuarioFormRegistro";
     }
 
     @PostMapping("/registro")
@@ -54,7 +54,7 @@ public class UserController {
             usuarioServicio.registrar(nombre, apellido, email,
                     nombreUsuario, password, password2);
             modelo.put("exito", "El usuario se registro correctamente.");
-            return "login.html";
+            return "login";
         } catch (Exception ex) {
             System.out.println("error en " + ex);
             modelo.put("error", ex.getMessage());
@@ -74,28 +74,28 @@ public class UserController {
             modelo.put("error", "Usuario o contraseña inválido.");
         }
 
-        return "login.html";
+        return "login";
     }
 
     //Esta ruta es para Mostrar solo una publicacion.
     @GetMapping("/{id}") //localhost:8080
     public String verPublicacion(@PathVariable("id") String id, ModelMap modelo) {
         modelo.addAttribute("publicacion", publicacionServicio.getOne(id));
-        return "Publicacion.html";
+        return "Publicacion";
     }
 
     //Esta ruta es para Mostrar publicaciones por categorias
     @GetMapping("/categorias/{categoria}")
     public String categoriaPublicacion(ModelMap modelo, @PathVariable("categoria") String categoria) {
         modelo.addAttribute("publicaciones", publicacionServicio.publicacionesxCategoria(categoria));
-        return "mods.html";
+        return "mods";
     }
 
     //Esta ruta es para hacer una busqueda personalizada
     @GetMapping("/buscar")
     public String buscarusuario(String consulta, ModelMap modelo) {
         modelo.addAttribute("publicaciones", publicacionServicio.busquedaPersonalizada(consulta));
-        return "mods.html";
+        return "mods";
     }
 
 }
